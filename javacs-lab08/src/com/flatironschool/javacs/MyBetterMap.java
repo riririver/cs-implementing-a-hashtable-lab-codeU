@@ -67,6 +67,9 @@ public class MyBetterMap<K, V> implements Map<K, V> {
 	public boolean containsKey(Object target) {
 		// to find a key, we only have to search one map
         // TODO: fill this in.
+		MyLinearMap<K, V> map = chooseMap(target);
+		if (map.get(target) != null)
+			return true;
 		return false;
 	}
 
@@ -74,6 +77,17 @@ public class MyBetterMap<K, V> implements Map<K, V> {
 	public boolean containsValue(Object target) {
 		// to find a value, we have to search all maps
         // TODO: fill this in.
+		for (int i=0; i<maps.size(); i++) {
+			MyLinearMap<K, V> map = maps.get(i);
+			Collection<? extends java.util.Map.Entry<K, V>> entries = map.getEntries();
+			for (Entry<K,V> entry: entries)
+			{
+				if (entry.getValue().equals(target))
+				{
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 

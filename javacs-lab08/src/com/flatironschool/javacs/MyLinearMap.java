@@ -97,7 +97,7 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 
 	@Override
 	public Set<Map.Entry<K, V>> entrySet() {
-		throw new UnsupportedOperationException();
+		return new HashSet<Map.Entry<K, V>>(entries);
 	}
 
 	@Override
